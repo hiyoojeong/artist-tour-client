@@ -2,16 +2,16 @@ import 'package:client/header/Header_Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'SignIn_ConfirmEmail.dart';
+import 'Signup_ConfirmEmail.dart';
 
-class SignIn_Info extends StatefulWidget {
-  const SignIn_Info({Key? key}) : super(key: key);
+class Signup_Info extends StatefulWidget {
+  const Signup_Info({Key? key}) : super(key: key);
 
   @override
-  State<SignIn_Info> createState() => _SignIn_InfoState();
+  State<Signup_Info> createState() => _Signup_InfoState();
 }
 
-class _SignIn_InfoState extends State<SignIn_Info> {
+class _Signup_InfoState extends State<Signup_Info> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -279,7 +279,7 @@ class _SignIn_InfoState extends State<SignIn_Info> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SignIn_ConfirmEmail()),
+                        builder: (context) => const Signup_ConfirmEmail()),
                   );
                 },
                 child: Text(

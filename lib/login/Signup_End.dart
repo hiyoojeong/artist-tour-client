@@ -3,14 +3,14 @@ import 'package:client/login/Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SignIn_End extends StatefulWidget {
-  const SignIn_End({Key? key}) : super(key: key);
+class Signup_End extends StatefulWidget {
+  const Signup_End({Key? key}) : super(key: key);
 
   @override
-  State<SignIn_End> createState() => _SignIn_EndState();
+  State<Signup_End> createState() => _Signup_EndState();
 }
 
-class _SignIn_EndState extends State<SignIn_End> {
+class _Signup_EndState extends State<Signup_End> {
   @override
   void initState() {
     super.initState();

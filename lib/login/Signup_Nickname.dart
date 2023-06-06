@@ -1,17 +1,17 @@
-import 'package:client/login/SignIn_Subscribe.dart';
+import 'package:client/login/Signup_Subscribe.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../header/Header_Login.dart';
 
-class SignIn_Nickname extends StatefulWidget {
-  const SignIn_Nickname({Key? key}) : super(key: key);
+class Signup_Nickname extends StatefulWidget {
+  const Signup_Nickname({Key? key}) : super(key: key);
 
   @override
-  State<SignIn_Nickname> createState() => _SignIn_NicknameState();
+  State<Signup_Nickname> createState() => _Signup_NicknameState();
 }
 
-class _SignIn_NicknameState extends State<SignIn_Nickname> {
+class _Signup_NicknameState extends State<Signup_Nickname> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -68,7 +68,7 @@ class _SignIn_NicknameState extends State<SignIn_Nickname> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SignIn_Subscribe()),
+                        builder: (context) => const Signup_Subscribe()),
                   );
                 },
                 child: Text(

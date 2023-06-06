@@ -1,5 +1,5 @@
-import 'package:client/login/SignIn_ConfirmEmail.dart';
-import 'package:client/login/SignIn_Info.dart';
+import 'package:client/login/Signup_ConfirmEmail.dart';
+import 'package:client/login/Signup_Info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -157,7 +157,7 @@ class _LoginState extends State<Login> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignIn_Info()),
+                          builder: (context) => const Signup_Info()),
                     );
                   },
                   child: Text(
