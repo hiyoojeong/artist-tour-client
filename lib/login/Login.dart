@@ -6,9 +6,8 @@ import 'package:client/login/Signup_Info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:client/map/NaverMap.dart';
 
-import '../URL.dart';
+import '../url/URL.dart';
 
 class LoginRequest {
   final String id;
@@ -63,8 +62,8 @@ class _LoginState extends State<Login> {
         prefs.setString("token", json['token']);
 
         // 화면 전환
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => NaverMap()));
+        // Navigator.pushReplacement(
+        //     context, MaterialPageRoute(builder: (context) => NaverMap()));
       }
     } catch (e) {
       print("Failed to send post data: ${e}");

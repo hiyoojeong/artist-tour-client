@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../header/Header_Login.dart';
+import '../bar/LoginBar.dart';
 
 class Signup_ConfirmEmail extends StatefulWidget {
   const Signup_ConfirmEmail({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _Signup_ConfirmEmailState extends State<Signup_ConfirmEmail> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: HeaderLogin(
+        appBar: LoginBar(
           title: "SIGN IN",
         ),
         body: ListView (

@@ -1,4 +1,4 @@
-import 'package:client/header/Header_Login.dart';
+import 'package:client/bar/LoginBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _Signup_InfoState extends State<Signup_Info> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: HeaderLogin(
+        appBar: LoginBar(
           title: "SIGN IN",
         ),
         body: ListView(

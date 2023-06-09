@@ -1,4 +1,4 @@
-import 'package:client/header/Header_Login.dart';
+import 'package:client/bar/LoginBar.dart';
 import 'package:client/login/Login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class _Signup_EndState extends State<Signup_End> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HeaderLogin(title: 'SIGN IN'),
+      appBar: LoginBar(title: 'SIGN IN'),
       body: ListView(
         padding: EdgeInsets.all(20),
         children: [

@@ -2,7 +2,7 @@ import 'package:client/login/Signup_Subscribe.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../header/Header_Login.dart';
+import '../bar/LoginBar.dart';
 
 class Signup_Nickname extends StatefulWidget {
   const Signup_Nickname({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _Signup_NicknameState extends State<Signup_Nickname> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: HeaderLogin(
+        appBar: LoginBar(
           title: "SIGN IN",
         ),
         body: ListView(
