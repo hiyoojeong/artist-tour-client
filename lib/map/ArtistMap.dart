@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:client/bar/MainBar.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,6 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../place/Place.dart';
 import '../url/URL.dart';
 
 class PlaceList {
@@ -17,7 +17,6 @@ class PlaceList {
   final String name;
   final double latitude;
   final double longitude;
-
 
   PlaceList(
       {required this.placeId,
@@ -66,39 +65,6 @@ class _ArtistMapState extends State<ArtistMap> {
   // place 정보를 저장
   List<Map<String, dynamic>> _placeList = [];
 
-  // List<Map<String, dynamic>> places = [
-  //   {
-  //     'name': 'Place 1',
-  //     'latitude': 37.532600,
-  //     'longitude': 127.024612,
-  //   },
-  //   {
-  //     'name': 'Place 2',
-  //     'latitude': 37.532700,
-  //     'longitude': 127.024712,
-  //   },
-  //   {
-  //     'name': 'Place 3',
-  //     'latitude': 37.532800,
-  //     'longitude': 127.024812,
-  //   },
-  //   {
-  //     'name': 'Place 4',
-  //     'latitude': 37.532900,
-  //     'longitude': 127.024912,
-  //   },
-  //   {
-  //     'name': 'Place 5',
-  //     'latitude': 37.533000,
-  //     'longitude': 127.025012,
-  //   },
-  //   {
-  //     'name': 'Place 6',
-  //     'latitude': 37.533100,
-  //     'longitude': 127.025112,
-  //   },
-  // ];
-
   @override
   void initState() {
     addCustomIcon();
@@ -128,11 +94,12 @@ class _ArtistMapState extends State<ArtistMap> {
         // 요청 성공
         // 전달받은 값 저장
         setState(() {
-          Map<String, dynamic> bodyInfo = json.decode(utf8.decode(response.bodyBytes));
+          Map<String, dynamic> bodyInfo =
+              json.decode(utf8.decode(response.bodyBytes));
           List<dynamic> body = bodyInfo['body'];
 
-          for(var item in body) {
-            if(item is Map<String, dynamic>) {
+          for (var item in body) {
+            if (item is Map<String, dynamic>) {
               _placeList.add(item);
             }
           }
@@ -149,7 +116,6 @@ class _ArtistMapState extends State<ArtistMap> {
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM);
       }
-
     } catch (e) {
       print("Failed to send post data: ${e}");
     }
@@ -198,18 +164,23 @@ class _ArtistMapState extends State<ArtistMap> {
             myLocationEnabled: _myLocationEnabled,
             myLocationButtonEnabled: false,
             markers: Set<Marker>.of(_placeList.map((place) {
-              print(place);
-                  return Marker(
-                    markerId: MarkerId(place['name']),
-                    position: LatLng(place['latitude'], place['longitude']),
-                    infoWindow: InfoWindow(title: place['name']),
-                    icon: markerIcon,
-                    onTap: () {
-                      //
-                    },
+              return Marker(
+                markerId: MarkerId(place['name']),
+                position: LatLng(place['latitude'], place['longitude']),
+                infoWindow: InfoWindow(title: place['name']),
+                icon: markerIcon,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Place(
+                        placeId: place['placeId'],
+                      ),
+                    ),
                   );
-                })
-            ),
+                },
+              );
+            })),
             onMapCreated: (controller) => _controller = controller,
           ),
 
