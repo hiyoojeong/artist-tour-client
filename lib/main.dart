@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '덕지순례',
-      home: ArtistMap(),
+      home: Loading(),
     );
   }
 }

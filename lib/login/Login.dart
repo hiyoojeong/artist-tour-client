@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:client/map/ArtistMap.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,17 +11,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../url/URL.dart';
 
 class LoginRequest {
-  final String id;
+  final String username;
   final String password;
 
-  LoginRequest({required this.id, required this.password});
+  LoginRequest({required this.username, required this.password});
 
   factory LoginRequest.fromJson(Map<String, dynamic> loginRequestMap) {
     return LoginRequest(
-        id: loginRequestMap['id'], password: loginRequestMap['password']);
+        username: loginRequestMap['username'], password: loginRequestMap['password']);
   }
 
-  Map<String, dynamic> toJson() => {'id': id, 'password': password};
+  Map<String, dynamic> toJson() => {'username': username, 'password': password};
 }
 
 // 로그인 화면
@@ -32,7 +33,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController _idController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   _login(LoginRequest loginRequest) async {
@@ -44,26 +45,36 @@ class _LoginState extends State<Login> {
         body: jsonEncode(loginRequest),
       );
 
-      // http 요청에 대한 응답 추출
-      Map<String, dynamic> json = jsonDecode(utf8.decode(response.bodyBytes));
-
-      // 로그인 실패
-      if (response.statusCode != 200) {
-        Fluttertoast.showToast(
-            msg: json['error_detailed'],
-            backgroundColor: Colors.white,
-            textColor: Colors.black,
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM);
-      } else {
+      if (response.statusCode == 200) {
         // 로그인 성공
+        print('로그인 성공');
+
+        // http 요청에 대한 응답 추출
+        Map<String, dynamic> json = jsonDecode(utf8.decode(response.bodyBytes));
+
+        print(json['token']);
+
         // 토큰 저장
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString("token", json['token']);
 
         // 화면 전환
-        // Navigator.pushReplacement(
-        //     context, MaterialPageRoute(builder: (context) => NaverMap()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ArtistMap()));
+      } else {
+        // 로그인 성공
+        print('로그인 실패');
+
+        // http 요청에 대한 응답 추출
+        Map<String, dynamic> json = jsonDecode(utf8.decode(response.bodyBytes));
+
+        // 에러메세지 출력
+        Fluttertoast.showToast(
+            msg: json['error_msg'],
+            backgroundColor: Colors.white,
+            textColor: Colors.black,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM);
       }
     } catch (e) {
       print("Failed to send post data: ${e}");
@@ -107,7 +118,7 @@ class _LoginState extends State<Login> {
                 // 아이디 텍스트폼필드 추가
                 TextFormField(
                   // 컨트롤러 설정
-                  controller: _idController,
+                  controller: _usernameController,
                   // 텍스트폼필드에 값이 없을 경우 메세지
                   validator: (value) {
                     if (value is String) {
@@ -199,8 +210,10 @@ class _LoginState extends State<Login> {
                 // 로그인 버튼
                 ElevatedButton(
                   onPressed: () {
+                    print("username: " + _usernameController.text);
+                    print("passwrod: " + _passwordController.text);
                     _login(new LoginRequest(
-                        id: _idController.text,
+                        username: _usernameController.text,
                         password: _passwordController.text));
                   },
                   child: Text(
