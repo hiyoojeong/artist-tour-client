@@ -1,4 +1,7 @@
+
+
 import 'package:client/loading/Loading.dart';
+import 'package:client/map/ArtistMap.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '덕지순례',
-      home: const Loading(),
+      home: ArtistMap(),
     );
   }
 }
