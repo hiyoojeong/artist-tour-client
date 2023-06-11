@@ -1,8 +1,6 @@
 
 
 import 'package:client/loading/Loading.dart';
-import 'package:client/map/ArtistMap.dart';
-import 'package:client/place/Place.dart';
 import 'package:flutter/material.dart';
 
 void main() {

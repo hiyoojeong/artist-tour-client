@@ -1,3 +1,5 @@
+import 'package:client/search/Search.dart';
+import 'package:client/setting/AppSetting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -21,12 +23,24 @@ class _MainBarState extends State<MainBar> {
       centerTitle: true,
       backgroundColor: Colors.black,
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const Search()),
+          );
+        },
         icon: Icon(Icons.search),
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AppSetting()),
+            );
+          },
           icon: Icon(Icons.settings),
         )
       ],

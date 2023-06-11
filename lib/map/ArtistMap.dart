@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+import 'package:client/add/Add.dart';
 import 'package:client/bar/MainBar.dart';
+import 'package:client/profile/Profile.dart';
+import 'package:client/rank/Rank.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -212,7 +215,11 @@ class _ArtistMapState extends State<ArtistMap> {
               children: [
                 FloatingActionButton(
                   onPressed: () {
-                    // 첫 번째 버튼 동작
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Add()),
+                    );
                   },
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.black,
@@ -222,7 +229,11 @@ class _ArtistMapState extends State<ArtistMap> {
                 SizedBox(height: 16),
                 FloatingActionButton(
                   onPressed: () {
-                    // 두 번째 버튼 동작
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Rank()),
+                    );
                   },
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.black,
@@ -232,7 +243,11 @@ class _ArtistMapState extends State<ArtistMap> {
                 SizedBox(height: 16),
                 FloatingActionButton(
                   onPressed: () {
-                    // 세 번째 버튼 동작
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Profile()),
+                    );
                   },
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.black,
