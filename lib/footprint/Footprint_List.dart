@@ -73,32 +73,50 @@ class _Footprint_ListState extends State<Footprint_List> {
         content:
             "부산사람인지라 부산에 방탄드론쇼가 열린다는 소식에 냅다바로 달려갈 수 있어서 좋았습니다. 서울말고 부산에도 이런거 자주자주해줬으면 좋겠어요 진짜루!",
         image: "image"),
+    new FootprintListInfo(
+        footprintId: 3,
+        nickname: "상여자가부르는상남자",
+        like: 18,
+        content:
+        "저는 이번 드론쇼에서 가장 기억에 남는게 아미들의 시민의식이었어요. 많은 사람들이 모이는 자리였는데도 길거리가 너무 깨끗하더라구요",
+        image: "image"),
+    new FootprintListInfo(
+        footprintId: 4,
+        nickname: "뉴진스고이",
+        like: 30,
+        content:
+        "거기서 뭐하는지도 몰랐는데, 집 바로 앞에 잠깐 나갔다가 사람이 모여있는 곳이라 가봤더니 너무 예쁜 드롭쇼를 하고 있더라구요~",
+        image: "image"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(10),
-        child: Stack(
-          children: [
-            Column(
+      body: ListView(
+        children: [
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Stack(
               children: [
-                for (int i = 0; i < _footprintList.length; i++) ...[
-                  footprint(_footprintList[i]),
-                  SizedBox(
-                    height: Constants.IntervalHeight,
-                  ),
-                ],
+                Column(
+                  children: [
+                    for (int i = 0; i < _footprintList.length; i++) ...[
+                      footprintWidget(_footprintList[i]),
+                      SizedBox(
+                        height: Constants.IntervalHeight,
+                      ),
+                    ],
+                  ],
+                )
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget footprint(FootprintListInfo footprintListInfo) {
+  Widget footprintWidget(FootprintListInfo footprintListInfo) {
     return InkWell(
       onTap: () {
 
@@ -106,8 +124,16 @@ class _Footprint_ListState extends State<Footprint_List> {
       child: Container(
         padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
         decoration: BoxDecoration(
-          color: Color(0xffF1F1F1),
+          color: Color(Constants.LightGray),
           borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(Constants.BoxShadowColorWithOpacity),
+              spreadRadius: Constants.BoxShadowSpreadRadius,
+              blurRadius: Constants.BoxShadowBlurRadius,
+              offset: Offset(Constants.BoxShadowOffset_1, Constants.BoxShadowOffset_2), // changes position of shadow
+            ),
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
