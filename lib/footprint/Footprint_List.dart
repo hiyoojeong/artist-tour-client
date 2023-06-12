@@ -103,7 +103,7 @@ class _Footprint_ListState extends State<Footprint_List> {
                     for (int i = 0; i < _footprintList.length; i++) ...[
                       footprintWidget(_footprintList[i]),
                       SizedBox(
-                        height: Constants.IntervalHeight,
+                        height: Constants.Interval,
                       ),
                     ],
                   ],

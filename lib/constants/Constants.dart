@@ -6,7 +6,7 @@ class Constants {
   static const double iconSize = 16.0;
 
   // 간격 설정
-  static const double IntervalHeight = 10.0;
+  static const double Interval = 10.0;
 
   // BoxShadow 설정
   static const double BoxShadowColorWithOpacity = 1.0;
