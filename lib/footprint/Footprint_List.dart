@@ -3,34 +3,34 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class FootprintRequest {
+class FootprintListRequest {
   final int placeId;
 
-  FootprintRequest({required this.placeId});
+  FootprintListRequest({required this.placeId});
 
-  factory FootprintRequest.fromJson(Map<String, dynamic> footprintRequestMap) {
-    return FootprintRequest(placeId: footprintRequestMap['placeId']);
+  factory FootprintListRequest.fromJson(Map<String, dynamic> footprintListRequestMap) {
+    return FootprintListRequest(placeId: footprintListRequestMap['placeId']);
   }
 
   Map<String, dynamic> toJson() => {'placeId': placeId};
 }
 
-class FootprintInfo {
+class FootprintListInfo {
   final int footprintId;
   final String nickname;
   final int like;
   final String content;
   final String image;
 
-  FootprintInfo(
+  FootprintListInfo(
       {required this.footprintId,
       required this.nickname,
       required this.like,
       required this.content,
       required this.image});
 
-  factory FootprintInfo.fromJson(Map<String, dynamic> footprintInfoMap) {
-    return FootprintInfo(
+  factory FootprintListInfo.fromJson(Map<String, dynamic> footprintInfoMap) {
+    return FootprintListInfo(
       footprintId: footprintInfoMap['footprintId'],
       nickname: footprintInfoMap['nickname'],
       like: footprintInfoMap['like'],
@@ -48,25 +48,25 @@ class FootprintInfo {
       };
 }
 
-class Place_Footprint extends StatefulWidget {
-  const Place_Footprint({Key? key, required this.placeId}) : super(key: key);
+class Footprint_List extends StatefulWidget {
+  const Footprint_List({Key? key, required this.placeId}) : super(key: key);
 
   final int placeId;
 
   @override
-  State<Place_Footprint> createState() => _Place_FootprintState();
+  State<Footprint_List> createState() => _Footprint_ListState();
 }
 
-class _Place_FootprintState extends State<Place_Footprint> {
-  List<FootprintInfo> _footprintList = [
-    new FootprintInfo(
+class _Footprint_ListState extends State<Footprint_List> {
+  List<FootprintListInfo> _footprintList = [
+    new FootprintListInfo(
         footprintId: 1,
         nickname: "방타라타라탕탕탕",
         like: 128,
         content:
             "근처에 지민이 추천해준 크로플 맛집있어서 크로플 하나 사들고 드론쇼를 보러갔어요ㅎㅎㅎ 크로플 구매한다고 일찍 움직였더니 일찍 도착했지뭐에요 ㅎㅎㅎ",
         image: "image"),
-    new FootprintInfo(
+    new FootprintListInfo(
         footprintId: 2,
         nickname: "진은진라면의진",
         like: 56,
@@ -98,7 +98,7 @@ class _Place_FootprintState extends State<Place_Footprint> {
     );
   }
 
-  Widget footprint(FootprintInfo footprintInfo) {
+  Widget footprint(FootprintListInfo footprintListInfo) {
     return InkWell(
       onTap: () {
 
@@ -116,7 +116,7 @@ class _Place_FootprintState extends State<Place_Footprint> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(footprintInfo.nickname),
+                  Text(footprintListInfo.nickname),
                   Row(
                     children: [
                       Icon(
@@ -124,7 +124,7 @@ class _Place_FootprintState extends State<Place_Footprint> {
                         size: Constants.iconSize,
                       ),
                       Text(
-                        footprintInfo.like.toString(),
+                        footprintListInfo.like.toString(),
                       ),
                     ],
                   ),
@@ -132,7 +132,7 @@ class _Place_FootprintState extends State<Place_Footprint> {
                     width: 200,
                     child: SingleChildScrollView(
                       child: Text(
-                        footprintInfo.content,
+                        footprintListInfo.content,
                         maxLines: 3, // 모든 줄 표시
                         overflow: TextOverflow.ellipsis,
                       ),

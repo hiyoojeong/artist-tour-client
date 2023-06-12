@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:client/bar/MainBar.dart';
 import 'package:client/place/Place_Content.dart';
-import 'package:client/place/Place_Footprint.dart';
+import 'package:client/footprint/Footprint_List.dart';
 import 'package:client/constants/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -196,7 +196,7 @@ class _PlaceState extends State<Place> with SingleTickerProviderStateMixin {
                   date: date,
                   content: content,
                 ),
-                Place_Footprint(placeId: widget.placeId),
+                Footprint_List(placeId: widget.placeId),
               ],
             ),
           )
