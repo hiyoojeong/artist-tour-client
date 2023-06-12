@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:client/bar/MainBar.dart';
 import 'package:client/place/Place_Content.dart';
 import 'package:client/place/Place_Footprint.dart';
+import 'package:client/standard/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -128,9 +129,9 @@ class _PlaceState extends State<Place> with SingleTickerProviderStateMixin {
                         children: [
                           Icon(
                             Icons.favorite,
-                            size: 20,
+                            size: Constants.iconSize,
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: Constants.IntervalHeight),
                           Text("108"),
                         ],
                       ),
@@ -138,9 +139,9 @@ class _PlaceState extends State<Place> with SingleTickerProviderStateMixin {
                         children: [
                           Icon(
                             Icons.flag,
-                            size: 20,
+                            size: Constants.iconSize,
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: Constants.IntervalHeight),
                           Text("37"),
                         ],
                       ),
