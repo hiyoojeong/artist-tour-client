@@ -1,4 +1,5 @@
 import 'package:client/constants/Constants.dart';
+import 'package:client/footprint/Footprint.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -119,7 +120,11 @@ class _Footprint_ListState extends State<Footprint_List> {
   Widget footprintWidget(FootprintListInfo footprintListInfo) {
     return InkWell(
       onTap: () {
-
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Footprint(footprintId: footprintListInfo.footprintId)),
+        );
       },
       child: Container(
         padding: EdgeInsets.fromLTRB(20, 10, 20, 10),

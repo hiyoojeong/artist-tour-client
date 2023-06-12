@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '덕지순례',
-      home: Footprint(footprintId: 1,),
+      home: Loading(),
     );
   }
 }
